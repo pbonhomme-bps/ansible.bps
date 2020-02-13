@@ -1,0 +1,43 @@
+- name: Homebrew Installer on CentOS 6
+  block:
+    - name: Install Linuxbrew prerequisites for Red Hat or CentOS
+      yum:
+        pkg:
+          - bzip2-devel
+          - curl
+          - curl-devel
+          - expat-devel
+          - git
+          - irb
+          - m4
+          - ncurses-devel
+          - ruby
+          - texinfo
+          - zlib-devel
+        update_cache: yes
+        state: present
+    - name: "Install Packages from Software Collections(SCL)"
+      include_role:
+        name: smbambling.scl
+        tasks_from: packages
+      vars:
+        scl_packages:
+          - {name: 'sclo-git212'}
+          - {name: 'rh-ruby24'}
+        scl_wrappers:
+          - {collection: 'sclo-git212', command: 'git'}
+          - {collection: 'rh-ruby24', command: 'ruby'}
+  become: yes
+- name: "Use Packages from Software Collections(SCL)"
+  include_role:
+    name: smbambling.scl
+    tasks_from: packages
+  vars:
+    scl_wrappers:
+      - {collection: 'sclo-git212', command: 'git'}
+      - {collection: 'rh-ruby24', command: 'ruby'}
+      - {collection: 'rh-python35', command: 'python'}
+- name: Install Homebrew
+  script: install-homebrew.sh
+  args:
+    creates: /home/linuxbrew/.linuxbrew/bin/brew

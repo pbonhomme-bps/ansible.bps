@@ -1,0 +1,10 @@
+- name: Install Pyenv(Python)
+  shell:
+    cmd: curl https://pyenv.run | bash
+  args:
+    creates: "{{ ansible_env.HOME }}/.pyenv/bin/pyenv"
+- name: Install Rustup(Rust)
+  shell:
+    cmd: curl https://sh.rustup.rs -sSf | sh -s -- -y --default-toolchain nightly
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/rustup"

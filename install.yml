@@ -2,7 +2,7 @@
 - hosts: localhost
   roles:
     - { role: homebrew-installer }
-    - { role: install-nodejs, sudo: yes }
+    - { role: install-nodejs, become: yes }
     - { role: install-misc }
-    - { role: install-zsh, sudo: yes }
-    - { role: install-neovim, sudo: yes }
+    - { role: install-zsh, become: yes }
+    - { role: install-neovim, become: yes }
