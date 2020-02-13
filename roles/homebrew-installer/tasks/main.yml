@@ -38,6 +38,7 @@
       - {collection: 'rh-ruby24', command: 'ruby'}
       - {collection: 'rh-python35', command: 'python'}
 - name: Install Homebrew
-  script: install-homebrew.sh
+  script: files/install-homebrew.sh
   args:
     creates: /home/linuxbrew/.linuxbrew/bin/brew
+  notify: Add Homebrew to $PATH.

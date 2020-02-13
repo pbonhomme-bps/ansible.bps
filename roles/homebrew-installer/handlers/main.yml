@@ -2,4 +2,4 @@
   become: true
   copy:
     dest: /etc/profile.d/bps-dev.sh
-    content: 'PATH=/opt/rh/devtoolset-8/root/usr/bin:/home/linuxbrew/.linuxbrew/bin:$PATH'
+    content: 'PATH=/opt/rh/devtoolset-8/root/usr/bin:$PATH:/home/linuxbrew/.linuxbrew/bin'

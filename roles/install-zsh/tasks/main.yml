@@ -1,4 +1,4 @@
 - name: Install Zsh
-  script: install-zsh.sh
+  script: files/install-zsh.sh
   args:
     creates: /usr/local/bin/zsh
