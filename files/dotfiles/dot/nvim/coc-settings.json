@@ -1,0 +1,16 @@
+{
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp", "h", "cc", "hpp"],
+            "rootPatterns": [".ccls-root", ".svn"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                },
+                "compilationDatabaseDirectory": ".build-ccls",
+                "highlight": { "lsRanges" : true }
+            }
+        }
+    }
+}

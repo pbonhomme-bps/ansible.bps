@@ -1,0 +1,5 @@
+- name: Run Dotbot Installer
+  command: dotbot -c install.conf.yaml
+  args:
+    chdir: "{{ ansible_env.HOME }}/.dot.bps/dotfiles"
+    creates: "{{ ansible_env.HOME }}/.zshrc"

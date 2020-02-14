@@ -1,0 +1,10 @@
+alias cat=bat
+alias ls='exa  --group-directories-first'
+alias fsk='sk --ansi -i -c '"'"'fd --type f "{}"'"'"''
+alias gsk='sk --ansi -i -c '"'"'rg --color=always --line-number "{}"'"'"''
+alias skvi='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && nvim "$x" || true }; f'
+#alias skvs='f(){ x="$(sk --bind "ctrl-p:toggle-preview" --ansi --preview="bat {} --color=always" --preview-window=right:60%:hidden)"; [[ $? -eq 0 ]] && code :w "$x" || true }; f'
+#alias cc='/opt/rh/devtoolset-2/root/usr/bin/cc'
+#alias gcc='/opt/rh/devtoolset-2/root/usr/bin/gcc'
+#alias c++='/opt/rh/devtoolset-2/root/usr/bin/c++'
+#alias g++='/opt/rh/devtoolset-2/root/usr/bin/g++'

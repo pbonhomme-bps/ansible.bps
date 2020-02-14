@@ -1,0 +1,8 @@
+- name: Install Dotbot Dotfile Manager
+  pip:
+    name: dotbot
+- name: Install Dotfiles Directory
+  copy:
+    src: files/dotfiles
+    dest: "{{ ansible_env.HOME }}/.dot.bps"
+  notify: Run Dotbot Installer

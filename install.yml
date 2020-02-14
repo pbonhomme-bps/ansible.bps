@@ -7,3 +7,4 @@
     - { role: install-zsh, become: yes }
     - { role: install-neovim, become: yes }
     - { role: install-cpptools }
+    - { role: install-dotfiles }
