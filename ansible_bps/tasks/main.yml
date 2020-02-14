@@ -1,9 +1,0 @@
----
-- hosts: localhost
-  become: true
-  tasks:
-- hosts: localhost
-  tasks:
-- hosts: localhost
-  become: true
-  tasks:
