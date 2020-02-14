@@ -1,2 +1,4 @@
 - name: Install C++ Tools
   script: files/install-cpptools.sh
+  args:
+    creates: /home/linuxbrew/.linuxbrew/bin/ccls

@@ -8,3 +8,4 @@
     - { role: install-neovim, become: yes }
     - { role: install-cpptools }
     - { role: install-dotfiles }
+    - { role: install-neovim-plugins }

@@ -1,0 +1,4 @@
+- name: Install Neovim Plugins
+  shell: source /etc/profile.d/bps-dev.sh && nvim --headless +PlugInstall +qa
+  args:
+    executable: /bin/bash
