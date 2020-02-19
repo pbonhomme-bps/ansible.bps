@@ -8,3 +8,4 @@
     ~/.config/nvim: dot/nvim
     ~/.zsh: dot/zsh
     ~/.zshrc: dot/zshrc
+    ~/.kde/share/apps/konsole/Shell.profile: dot/Shell.profile
