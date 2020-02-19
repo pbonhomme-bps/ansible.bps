@@ -23,6 +23,6 @@ cd zsh
     LDFLAGS="-L$HOME/.local/lib" \
     --with-tcsetpgrp
 make -j && make install
-sudo ln -s $HOME/.local/bin/zsh /usr/local/bin/zsh
+#sudo ln -s $HOME/.local/bin/zsh /usr/local/bin/zsh
 # Install ZPlug
 export ZPLUG_HOME=$HOME/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME

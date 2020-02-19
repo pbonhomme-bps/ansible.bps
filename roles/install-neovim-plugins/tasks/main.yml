@@ -1,3 +1,11 @@
+- name: Install Plugin Dependencies
+  become: yes
+  yum:
+    pkg:
+      - mono-core
+      - mono-devel
+    update_cache: yes
+    state: present
 - name: Install Neovim Plugins
   shell: source /etc/profile.d/bps-dev.sh && nvim --headless +PlugInstall +qa
   args:

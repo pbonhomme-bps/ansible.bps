@@ -1,4 +1,2 @@
 - name: Install Zsh
-  script: files/install-zsh.sh
-  args:
-    creates: /usr/local/bin/zsh
+  command: brew install zsh

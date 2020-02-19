@@ -5,18 +5,19 @@ set -e
 set -x
 source /etc/profile.d/bps-dev.sh
 source /opt/rh/devtoolset-8/enable
+rm -rf $HOME/dev/BPS-Dev-Setup/neovim
 cd $HOME/dev/BPS-Dev-Setup
 # Neovim CentOS 6 Requirements
-sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch
+#sudo yum -y install ninja-build libtool autoconf automake cmake gcc gcc-c++ make pkgconfig unzip patch
 # Neovim
 #brew install neovim
 git clone --recursive https://github.com/neovim/neovim && cd neovim
 git checkout stable
 make CMAKE_BUILD_TYPE=Release
-sudo make install
+#sudo make install
 # Install Vim-Plug
-mkdir -p $HOME/.local/share/nvim
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+#mkdir -p $HOME/.local/share/nvim
+#curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+#    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 # Neovim Debugger(vimspector) Requirements
-sudo yum -y install mono-core mono-devel
+#sudo yum -y install mono-core mono-devel

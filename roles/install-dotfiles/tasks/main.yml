@@ -1,8 +1,11 @@
 - name: Install Dotbot Dotfile Manager
-  pip:
-    name: dotbot
+  command: "{{ ansible_env.HOME }}/.pyenv/versions/dev-setup/bin/pip install dotbot"
 - name: Install Dotfiles Directory
   copy:
     src: files/dotfiles
     dest: "{{ ansible_env.HOME }}/.dot.bps"
-  notify: Run Dotbot Installer
+- name: Run Dotbot Installer
+  command: "{{ ansible_env.HOME }}/.pyenv/versions/dev-setup/bin/dotbot -c install.conf.yaml"
+  args:
+    chdir: "{{ ansible_env.HOME }}/.dot.bps/dotfiles"
+    creates: "{{ ansible_env.HOME }}/.zshrc"

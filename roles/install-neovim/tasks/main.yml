@@ -1,4 +1,29 @@
+- name: Install Neovim Dependencies
+  become: yes
+  yum:
+    name:
+      - ninja-build 
+      - libtool 
+      - autoconf 
+      - automake 
+      - cmake 
+      - gcc 
+      - gcc-c++ 
+      - make 
+      - pkgconfig 
+      - unzip 
+      - patch
+    update_cache: yes
+    state: present
+- name: Build Neovim
+  command: ./files/install-neovim.sh
 - name: Install Neovim
-  script: files/install-neovim.sh
-  args:
-    creates: /usr/local/bin/nvim
+  become: yes
+  shell: ln -s "{{ ansible_env.HOME }}/dev/BPS-Dev-Setup/nvim"
+- name: Setup Vim-Plug
+  file:
+    path: "{{ ansible_env.HOME }}/.local/share/nvim"
+    state: directory
+    mode: '0755'
+- name: Install Vim-Plug
+  command: curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
