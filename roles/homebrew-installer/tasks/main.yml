@@ -42,3 +42,8 @@
   args:
     creates: /home/linuxbrew/.linuxbrew/bin/brew
   notify: Add Homebrew to $PATH.
+- name: Update $PATH.
+  become: true
+  copy:
+    dest: /etc/profile.d/bps-dev.sh
+    content: 'PATH=/opt/rh/devtoolset-8/root/usr/bin:$PATH:/home/linuxbrew/.linuxbrew/bin'

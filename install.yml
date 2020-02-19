@@ -4,8 +4,8 @@
     - { role: homebrew-installer }
     - { role: install-nodejs, become: yes }
     - { role: install-misc }
-    - { role: install-zsh, become: yes }
-    - { role: install-neovim, become: yes }
+    - { role: install-zsh }
+    - { role: install-neovim }
     - { role: install-cpptools }
     - { role: install-dotfiles }
     - { role: install-neovim-plugins }
