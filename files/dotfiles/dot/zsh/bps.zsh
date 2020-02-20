@@ -6,7 +6,15 @@ export BPS_DEV_CCLS_ROOT=".ccls-root"
 export BPS_DEV_CCLS_CACHE=".ccls-cache"
 export BPS_DEV_CCLS_BUILD_DIR=".build-ccls"
 export PATH="/opt/rh/sclo-git212/root/usr/bin:$PATH"
+export VORAK_BOX_USERNAME="phillip.bonhomme"
+export VORAK_BOX_ADDR="35.235.101.45"
+alias ssh-vorak="ssh $VORAK_BOX_USERNAME@$VORAK_BOX_ADDR"
 alias gdb='/opt/rh/devtoolset-8/root/usr/bin/gdb'
+
+rsync-vorak() {
+    rsync -v -a ssh $1 $VORAK_BOX_USERNAME@$VORAK_BOX_ADDR:/home/$VORAK_BOX_USERNAME/rsync.here
+}
+
 svnaddtxt() {
     for var in $@
     do

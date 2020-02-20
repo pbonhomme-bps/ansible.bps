@@ -1,5 +1,20 @@
 ---
 - hosts: localhost
+  vars:
+      linuxbrew_path: /home/linuxbrew/.linuxbrew/bin
+  environment:
+    PATH: /opt/rh/devtoolset-8/root/usr/bin${PATH:+:${PATH}}
+    MANPATH: /opt/rh/devtoolset-8/root/usr/share/man:${MANPATH}
+    INFOPATH: /opt/rh/devtoolset-8/root/usr/share/info${INFOPATH:+:${INFOPATH}}
+    PCP_DIR: /opt/rh/devtoolset-8/root
+    PERL5LIB: /opt/rh/devtoolset-8/root//usr/lib64/perl5/vendor_perl:/opt/rh/devtoolset-8/root/usr/lib/perl5:/opt/rh/devtoolset-8/root//usr/share/perl5/vendor_perl${PERL5LIB:+:${PERL5LIB}}
+    rpmlibdir_devtoolset8: /usr/lib64
+    rpmlibdir32_devtoolset8: ":/opt/rh/devtoolset-8/root${rpmlibdir_devtoolset8/lib64/lib}"
+    LD_LIBRARY_PATH: /opt/rh/devtoolset-8/root$rpmlibdir_devtoolset8$rpmlibdir32_devtoolset8${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    LD_LIBRARY_PATH: /opt/rh/devtoolset-8/root$rpmlibdir_devtoolset8$rpmlibdir32_devtoolset8:/opt/rh/devtoolset-8/root$rpmlibdir_devtoolset8/dyninst$rpmlibdir32_devtoolset8/dyninst${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+    pythonvers_devtoolset8: 2.6
+    PYTHONPATH: /opt/rh/devtoolset-8/root/usr/lib64/python$pythonvers_devtoolset8/site-packages:/opt/rh/devtoolset-8/root/usr/lib/python$pythonvers/site-packages${PYTHONPATH:+:${PYTHONPATH}}
+    PKG_CONFIG_PATH: /opt/rh/devtoolset-8/root/usr/lib64/pkgconfig${PKG_CONFIG_PATH:+:${PKG_CONFIG_PATH}}
   roles:
     - { role: homebrew-installer }
     - { role: install-nodejs, become: yes }
