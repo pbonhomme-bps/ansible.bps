@@ -1,4 +1,40 @@
-- name: Install C++ Tools
-  script: files/install-cpptools.sh
+- name: Install Clang
+  command: brew install llvm
   args:
-    creates: /home/linuxbrew/.linuxbrew/bin/ccls
+    creates: "{{ linuxbrew_path }}/clang"
+- name: Install C++ Tools
+  command: brew install ccls
+  args:
+    creates: "{{ linuxbrew_path }}/ccls"
+- name: Install Skim
+  command: cargo install skim
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/skim"
+- name: Install RipGrep
+  command: cargo install ripgrep
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/rg"
+- name: Install Finder
+  command: cargo install fd-find
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/fd"
+- name: Install Exa(ls alternative)
+  command: cargo install exa
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/exa"
+- name: Install DiffR
+  command: cargo install diffr
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/diffr"
+- name: Install Hyperfine
+  command: cargo install hyperfine
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/hyperfine"
+- name: Install Bat(cat alternative)
+  command: brew install bat
+  args:
+    creates: "{{ linuxbrew_path }}/bat"
+- name: Install JQ
+  command: brew install jq
+  args:
+    creates: "{{ linuxbrew_path }}/jq"
