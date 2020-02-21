@@ -1,2 +1,49 @@
+- name: Download NCurses 6.1
+  get_url:
+    url: ftp://ftp.gnu.org/gnu/ncurses/ncurses-6.1.tar.gz
+    dest: "{{ src_setup_path }}/ncurses-6.1.tar.gz"
+- name: Unpack NCurses 6.1
+  unarchive:
+  args:
+    src: "{{ src_setup_path }}/ncurses-6.1.tar.gz"
+    dest: "{{ src_setup_path }}"
+- name: Configure NCurses 6.1
+  command: "./configure --prefix={{ ansible_env.HOME }}/.local CXXFLAGS=\"-fPIC\" CFLAGS=\"-fPIC\""
+  args:
+    chdir: "{{ src_setup_path }}/ncurses-6.1"
+- name: Build NCurses 6.1
+  command: make
+  args:
+    chdir: "{{ src_setup_path }}/ncurses-6.1"
+- name: Install NCurses 6.1
+  command: make install
+  args:
+    chdir: "{{ src_setup_path }}/ncurses-6.1"
+- name: Download Zsh
+  get_url:
+    url: https://sourceforge.net/projects/zsh/files/latest/download
+    dest: "{{ src_setup_path }}/zsh.tar.gz"
+- name: Rename Zsh Archive
+  file:
+    path: "{{ src_setup_path }}/zsh"
+    state: directory
+    mode: '0755'
+- name: Unpack Zsh
+  unarchive:
+  args:
+    src: "{{ src_setup_path }}/zsh.tar.gz"
+    dest: "{{ src_setup_path }}/zsh"
+    extra_opts: [--strip-components=1]
+- name: Configure Zsh
+  command: "./configure --prefix=\"{{ ansible_env.HOME }}/.local\" CPPFLAGS=\"-I{{ ansible_env.HOME }}/.local/include\" LDFLAGS=\"-L{{ ansible_env.HOME }}/.local/lib\" --with-tcsetpgrp"
+  args:
+    chdir: "{{ src_setup_path }}/zsh"
+- name: Build Zsh
+  command: make
+  args:
+    chdir: "{{ src_setup_path }}/zsh"
 - name: Install Zsh
-  command: brew install zsh
+  command: make install
+  args:
+    chdir: "{{ src_setup_path }}/zsh"
+    creates: "{{ ansible_env.HOME }}/.local/bin/zsh"
