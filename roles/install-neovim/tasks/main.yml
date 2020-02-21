@@ -15,11 +15,24 @@
       - patch
     update_cache: yes
     state: present
-- name: Build Neovim
-  command: ./files/install-neovim.sh
+- name: Download Neovim Source
+  command: "git clone --recursive https://github.com/neovim/neovim {{ src_setup_path }}/neovim"
+  args:
+    creates: "{{ src_setup_path }}/neovim"
+- name: Switch to Stable Neovim Source
+  command: git checkout stable
+  args:
+    chdir: "{{ src_setup_path }}/neovim"
+- name: Build Neovim Source
+  command: make CMAKE_BUILD_TYPE=Release
+  args:
+    chdir: "{{ src_setup_path }}/neovim"
 - name: Install Neovim
   become: yes
-  shell: ln -s "{{ ansible_env.HOME }}/dev/BPS-Dev-Setup/nvim"
+  command: make install
+  args:
+    chdir: "{{ src_setup_path }}/neovim"
+    creates: /usr/local/bin/nvim
 - name: Setup Vim-Plug
   file:
     path: "{{ ansible_env.HOME }}/.local/share/nvim"

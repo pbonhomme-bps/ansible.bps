@@ -2,6 +2,7 @@
 - hosts: localhost
   vars:
       linuxbrew_path: /home/linuxbrew/.linuxbrew/bin
+      src_setup_path: "{{ ansible_env.HOME }}/dev/BPS-Dev-Setup"
   environment:
     PATH: /opt/rh/devtoolset-8/root/usr/bin:{{ ansible_env.PATH }}
     MANPATH: "/opt/rh/devtoolset-8/root/usr/share/man:{{ lookup('env', 'MANPATH') }}"
